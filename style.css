@@ -276,8 +276,8 @@ h1 {
         height: 100dvh;
         min-height: 100dvh;
 
-        padding: 0;
         margin: 0;
+        padding: 0;
 
         overflow: hidden;
 
@@ -288,22 +288,23 @@ h1 {
     /* ---------- TITOLO ---------- */
 
     h1 {
-        font-size: 28px;
-        margin: 12px 0 8px 0;
+        font-size: 22px;
+        margin: 8px 0 5px 0;
 
         text-align: center;
-        line-height: 1.1;
+        line-height: 1;
     }
 
 
     /* ---------- DOMANDA ---------- */
 
     #domanda {
-        width: 92%;
-        margin: 0 auto 10px auto;
+        width: 94%;
 
-        font-size: 18px;
-        line-height: 1.2;
+        margin: 0 auto 6px auto;
+
+        font-size: 14px;
+        line-height: 1.1;
 
         text-align: center;
     }
@@ -312,55 +313,55 @@ h1 {
     /* ---------- PUZZLE ---------- */
 
     #puzzle {
-        width: 94%;
-        max-width: 94%;
+        width: 96%;
+        max-width: 96%;
 
-        margin: 0 auto 12px auto;
+        margin: 0 auto 7px auto;
 
-        gap: 4px;
+        gap: 2px;
 
         justify-content: center;
         align-items: center;
     }
 
     .casella {
-        width: 27px;
-        height: 34px;
+        width: 20px;
+        height: 25px;
 
-        border: 2px solid white;
-        border-radius: 4px;
+        border: 1px solid white;
+        border-radius: 3px;
 
-        font-size: 20px;
+        font-size: 15px;
     }
 
     .spazio {
-        width: 10px;
+        width: 6px;
     }
 
 
     /* ---------- TASTIERA ---------- */
 
     #keyboard {
-        width: 96%;
-        max-width: 96%;
+        width: 98%;
+        max-width: 98%;
 
         margin: 0 auto;
 
-        gap: 4px;
+        gap: 3px;
 
         justify-content: center;
         align-content: center;
     }
 
     #keyboard button {
-        width: 36px;
-        height: 36px;
+        width: 29px;
+        height: 29px;
 
         padding: 0;
 
-        border-radius: 5px;
+        border-radius: 4px;
 
-        font-size: 16px;
+        font-size: 13px;
     }
 
 
@@ -370,73 +371,71 @@ h1 {
         position: fixed;
 
         left: 50%;
-        bottom: 8px;
+        bottom: 5px;
 
         transform: translateX(-50%);
 
-        width: auto;
-
-        gap: 8px;
+        gap: 5px;
 
         z-index: 20;
     }
 
     #azioni button {
-        padding: 7px 12px;
+        padding: 5px 8px;
 
-        font-size: 13px;
+        font-size: 10px;
 
-        border-radius: 6px;
+        border-radius: 5px;
     }
 
 
     /* ---------- PROSSIMA DOMANDA ---------- */
 
     #next {
-        right: 8px;
-        bottom: 8px;
+        right: 5px;
+        bottom: 5px;
 
-        width: 105px;
-        height: 42px;
+        width: 75px;
+        height: 30px;
 
-        font-size: 12px;
+        font-size: 9px;
 
-        padding: 0 22px 0 6px;
+        padding: 0 15px 0 4px;
 
-        border-width: 2px;
+        border-width: 1px;
     }
 
 
     /* ---------- DOMANDA PRECEDENTE ---------- */
 
     #prev {
-        left: 8px;
-        bottom: 8px;
+        left: 5px;
+        bottom: 5px;
 
-        width: 105px;
-        height: 42px;
+        width: 75px;
+        height: 30px;
 
-        font-size: 12px;
+        font-size: 9px;
 
-        padding: 0 6px 0 22px;
+        padding: 0 4px 0 15px;
 
-        border-width: 2px;
+        border-width: 1px;
     }
 
 
     /* ---------- ERRORI ---------- */
 
     #errore {
-        font-size: 100px;
+        font-size: 70px;
     }
 
     #peccato {
         width: 100%;
 
-        font-size: 65px;
+        font-size: 45px;
     }
 
     #peccato div {
-        font-size: 28px;
+        font-size: 20px;
     }
 }
