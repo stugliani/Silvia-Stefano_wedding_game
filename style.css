@@ -1,160 +1,253 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    margin: 0;
+    padding: 0;
+
+    background-color: #111;
+    color: white;
+    font-family: Arial, sans-serif;
+
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 50px;
+    margin: 40px 0 20px 0;
+}
+
+.aCapo {
+    flex-basis: 100%;
+    height: 0;
+}
+
+#domanda {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+#puzzle {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    gap: 8px;
+    max-width: 1000px;
+    margin-bottom: 60px;
+}
+
+.casella {
+    width: 45px;
+    height: 55px;
+
+    border: 2px solid white;
+    border-radius: 6px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 32px;
+    font-weight: bold;
+
+    background-color: #222;
+}
+
+.spazio {
+    width: 20px;
+}
+
+
 /* =========================
-   VERSIONE SMARTPHONE
+   TASTIERA
    ========================= */
 
-@media (max-width: 600px) {
+#keyboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 
-    body {
-        width: 100%;
-        min-height: 100vh;
-        height: auto;
-        overflow-y: auto;
-        overflow-x: hidden;
+    gap: 8px;
+    max-width: 850px;
+}
 
-        padding-bottom: 120px;
-    }
+#keyboard button {
+    width: 55px;
+    height: 55px;
 
-    h1 {
-        font-size: 32px;
-        margin: 20px 0 15px 0;
-        text-align: center;
-    }
+    border: none;
+    border-radius: 8px;
 
-    #domanda {
-        font-size: 19px;
-        text-align: center;
-        margin: 0 20px 20px 20px;
-    }
+    background-color: #333;
+    color: white;
 
-    /* =========================
-       PUZZLE
-       ========================= */
+    font-size: 22px;
+    font-weight: bold;
 
-    #puzzle {
-        width: 95%;
-        max-width: 100%;
-        gap: 5px;
-        margin-bottom: 25px;
-    }
+    cursor: pointer;
+}
 
-    .casella {
-        width: 30px;
-        height: 38px;
+#keyboard button:hover {
+    background-color: #555;
+}
 
-        font-size: 22px;
-
-        border-width: 2px;
-    }
-
-    .spazio {
-        width: 10px;
-    }
+#keyboard button:active {
+    transform: scale(0.95);
+}
 
 
-    /* =========================
-       TASTIERA
-       ========================= */
+/* =========================
+   DUE TASTI IN BASSO
+   ========================= */
 
-    #keyboard {
-        width: 95%;
-        max-width: 400px;
+#azioni {
+    position: fixed;
 
-        gap: 6px;
+    bottom: 30px;
+    left: 50%;
 
-        margin-bottom: 25px;
-    }
+    transform: translateX(-50%);
 
-    #keyboard button {
-        width: 40px;
-        height: 40px;
+    display: flex;
+    gap: 20px;
+}
 
-        font-size: 17px;
+#azioni button {
+    padding: 15px 30px;
 
-        border-radius: 6px;
-    }
+    border-radius: 8px;
 
+    background-color: white;
 
-    /* =========================
-       BOTTONI RISOLVI / SBAGLIATO
-       ========================= */
+    font-size: 20px;
+    font-weight: bold;
 
-    #azioni {
-        position: static;
+    cursor: pointer;
+}
 
-        transform: none;
+#risolvi {
+    color: green;
+    border: 3px solid green;
+}
 
-        display: flex;
-        justify-content: center;
+#sbagliato {
+    color: red;
+    border: 3px solid red;
+}
 
-        gap: 10px;
+#azioni button:hover {
+    transform: scale(1.05);
+}
 
-        margin-top: 10px;
-        margin-bottom: 20px;
-    }
-
-    #azioni button {
-        padding: 10px 14px;
-
-        font-size: 14px;
-        border-width: 2px;
-    }
-
-
-    /* =========================
-       DOMANDA SUCCESSIVA
-       ========================= */
-
-    #next {
-        position: fixed;
-
-        right: 10px;
-        bottom: 10px;
-
-        width: 150px;
-        height: 50px;
-
-        font-size: 13px;
-
-        padding: 0 35px 0 8px;
-
-        border-width: 2px;
-    }
+#azioni button:active {
+    transform: scale(0.97);
+}
 
 
-    /* =========================
-       DOMANDA PRECEDENTE
-       ========================= */
+/* =========================
+   PROSSIMA DOMANDA
+   ========================= */
 
-    #prev {
-        position: fixed;
+#next {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    width: 250px;
+    height: 70px;
+    border: 3px solid blue;
+    background: white;
+    color: blue;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0 60px 0 15px;
+    clip-path: polygon(
+        0 15%,
+        72% 15%,
+        72% 0,
+        100% 50%,
+        72% 100%,
+        72% 85%,
+        0 85%
+    );
+}
 
-        left: 10px;
-        bottom: 10px;
+#prev {
+    position: fixed;
+    left: 30px;
+    bottom: 30px;
+    width: 250px;
+    height: 70px;
+    border: 3px solid blueviolet;
+    background: white;
+    color: blueviolet;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0 15px 0 60px;
 
-        width: 150px;
-        height: 50px;
+    clip-path: polygon(
+        100% 15%,
+        28% 15%,
+        28% 0,
+        0 50%,
+        28% 100%,
+        28% 85%,
+        100% 85%
+    );
+}
 
-        font-size: 13px;
 
-        padding: 0 8px 0 35px;
+/* =========================
+   ERRORI
+   ========================= */
 
-        border-width: 2px;
-    }
+#errore {
+    display: none;
 
+    position: fixed;
 
-    /* =========================
-       ERRORI
-       ========================= */
+    top: 50%;
+    left: 50%;
 
-    #errore {
-        font-size: 100px;
-    }
+    transform: translate(-50%, -50%);
 
-    #peccato {
-        font-size: 70px;
-    }
+    font-size: 180px;
 
-    #peccato div {
-        font-size: 35px;
-    }
+    color: red;
+    font-weight: bold;
+
+    z-index: 1000;
+}
+
+#peccato {
+    display: none;
+
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+
+    font-size: 120px;
+
+    color: red;
+    font-weight: bold;
+
+    z-index: 1000;
+}
+
+#peccato div {
+    font-size: 50px;
+    margin-top: 10px;
 }
