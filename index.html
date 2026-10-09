@@ -25,24 +25,35 @@
     <div id="keyboard"></div>
 
     <div id="azioni">
-    <button id="risolvi">CONOSCI GLI SPOSI</button>
-    <button id="sbagliato">AHI AHI AHI</button>
+        <button id="risolvi">CONOSCI GLI SPOSI</button>
     </div>
-    
+
+    <!-- Pannello in cui si scrive la soluzione -->
+    <div id="tentativo">
+        <input type="text" id="rispostaInput" placeholder="Scrivi la frase..."
+               autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false">
+        <div id="tentativoBottoni">
+            <button id="invia">INVIA</button>
+            <button id="annulla">ANNULLA</button>
+        </div>
+    </div>
+
     <div id="azione_next">
-    <button id="next">Domanda Successiva</button>
+        <button id="next">Domanda Successiva</button>
     </div>
 
     <div id="azione_prev">
-    <button id="prev">Domanda Precedente</button>
+        <button id="prev">Domanda Precedente</button>
     </div>
 
     <div id="errore">✕</div>
 
     <div id="peccato">
-       ✕
-    <div>PECCATO!</div>
+        ✕
+        <div>AHI AHI AHI</div>
     </div>
+
+    <div id="corretto">CONOSCI GLI SPOSI!</div>
 
 <script src="script.js"></script>
 </body>

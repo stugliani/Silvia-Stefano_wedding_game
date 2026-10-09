@@ -5,8 +5,12 @@ const risolvi = document.getElementById("risolvi");
 const next = document.getElementById("next");
 const prev = document.getElementById("prev");
 const errore = document.getElementById("errore");
-const sbagliato = document.getElementById("sbagliato");
 const peccato = document.getElementById("peccato");
+const corretto = document.getElementById("corretto");
+const tentativo = document.getElementById("tentativo");
+const rispostaInput = document.getElementById("rispostaInput");
+const invia = document.getElementById("invia");
+const annulla = document.getElementById("annulla");
 
 const domande = [
     {
@@ -29,6 +33,7 @@ function caricaDomanda() {
     frase = domande[domandaCorrente].frase;
     lettereScoperte = [];
     domandaElemento.innerHTML = domanda;
+    chiudiTentativo();
     aggiornaPuzzle();
 }
 
@@ -62,6 +67,38 @@ function aggiornaPuzzle() {
 }
 
 
+// Mostra un elemento per un certo tempo
+function mostraTemporaneo(elemento, millisecondi) {
+    elemento.style.display = "block";
+    setTimeout(function() {
+        elemento.style.display = "none";
+    }, millisecondi);
+}
+
+
+// Normalizza un testo per il confronto:
+// maiuscolo, senza accenti, senza spazi, senza "|" e punteggiatura
+function normalizza(testo) {
+    return testo
+        .toUpperCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^A-Z0-9]/g, "");
+}
+
+
+function apriTentativo() {
+    tentativo.style.display = "block";
+    rispostaInput.value = "";
+    rispostaInput.focus();
+}
+
+function chiudiTentativo() {
+    tentativo.style.display = "none";
+    rispostaInput.blur();
+}
+
+
 caricaDomanda();
 
 
@@ -80,45 +117,65 @@ for (let codice = 65; codice <= 90; codice++) {
         aggiornaPuzzle();
         // CONTROLLO SE LA LETTERA ESISTE
         if (!frase.includes(lettera)) {
-            errore.style.display = "block";
-            setTimeout(function() {
-                errore.style.display = "none";
-            }, 1000);
+            mostraTemporaneo(errore, 1000);
         }
     });
 }
 
 
-// RISOLVI
+// CONOSCI GLI SPOSI -> apre il campo di testo
 risolvi.addEventListener("click", function() {
-
-    lettereScoperte = [...new Set(frase.replaceAll(" ", "").split(""))];
-
-    aggiornaPuzzle();
-
+    if (tentativo.style.display === "block") {
+        chiudiTentativo();
+    } else {
+        apriTentativo();
+    }
 });
 
-// SOLUZIONE ERRATA
-sbagliato.addEventListener("click", function() {
+// INVIA LA RISPOSTA
+function controllaRisposta() {
+    const risposta = normalizza(rispostaInput.value);
 
-    peccato.style.display = "block";
+    if (risposta === "") {
+        return;
+    }
 
-    setTimeout(function() {
-        peccato.style.display = "none";
-    }, 2000);
+    chiudiTentativo();
 
+    if (risposta === normalizza(frase)) {
+        // CORRETTA: scopre tutta la frase e mostra la scritta
+        lettereScoperte = [...new Set(frase.replaceAll(" ", "").replaceAll("|", "").split(""))];
+        aggiornaPuzzle();
+        mostraTemporaneo(corretto, 3000);
+    } else {
+        // SBAGLIATA: X rossa con AHI AHI AHI
+        mostraTemporaneo(peccato, 2000);
+    }
+}
+
+invia.addEventListener("click", controllaRisposta);
+
+rispostaInput.addEventListener("keydown", function(evento) {
+    if (evento.key === "Enter") {
+        controllaRisposta();
+    }
 });
+
+annulla.addEventListener("click", chiudiTentativo);
+
 
 // PROSSIMA DOMANDA
 next.addEventListener("click", function() {
-
-    domandaCorrente = domandaCorrente+1;
+    if (domandaCorrente < domande.length - 1) {
+        domandaCorrente = domandaCorrente + 1;
+    }
     caricaDomanda();
 });
 
 // PRECEDENTE DOMANDA
 prev.addEventListener("click", function() {
-
-    domandaCorrente = domandaCorrente-1;
+    if (domandaCorrente > 0) {
+        domandaCorrente = domandaCorrente - 1;
+    }
     caricaDomanda();
 });
